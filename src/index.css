@@ -1,13 +1,44 @@
-body {
+@import-normalize;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&family=Montserrat:wght@500;600;700&family=Roboto&display=swap');
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  /* Typography */
+  --family: 'Montserrat', sans-serif;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-bg: 20px;
+
+  /* Colors */
+  --colors-bg: #E5E5E5;
+  --colors-cover: #FFF;
+  --colors-t-main: rgba(37, 43, 66, 1);
+  --colors-t-first: rgba(255, 104, 91, 1);
+  --colors-t-second: rgba(115, 115, 115, 1);
+  --colors-t-third: rgba(255, 255, 255, 1);
+
+  /* Icons */
+  --colors-icon: rgba(231, 64, 64, 1);
+
+  /* Padding */
+  --mobile-gap: 10px;
+  --desktop-gap: 70px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--family);
+  background-color: var(--colors-bg);
+  font-weight: var(--fw-bold);
+  overflow-x: hidden;
 }
