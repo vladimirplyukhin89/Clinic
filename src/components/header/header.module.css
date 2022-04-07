@@ -1,5 +1,21 @@
+.header {
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
 .container {
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    align-items: center;
+    margin: 0 var(--mobile-gap);
+    padding: 22px 0;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+@media(min-width: 767px) {
+    .container {
+        margin: 0 var(--desktop-gap);
+    }
 }

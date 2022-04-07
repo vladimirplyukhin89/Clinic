@@ -5,6 +5,11 @@ function App() {
   return (
     <>
       <Header />
+      <main>
+        <section>
+
+        </section>
+      </main>
     </>
   );
 }

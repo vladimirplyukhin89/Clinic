@@ -1,0 +1,29 @@
+.contacts {
+    color: var(--colors-t-second);
+    font-size: 15px;
+    font-weight: var(--fw-semi-bold);
+    line-height: 24px;
+    padding-right: var(--mobile-gap);
+}
+
+.login {
+    color: var(--colors-t-first);
+    background-color: var(--colors-bg);
+    font-size: var(--fs-bg);
+    font-weight: var(--fw-medium);
+    line-height: 24px;
+    border: 2px solid #FF685B;
+    border-radius: var(--border-header);
+    padding: 6px 20px;
+    cursor: pointer;
+}
+
+@media(min-width: 767px) {
+    .contacts {
+        padding-right: 60px;
+    }
+
+    .login {
+        padding: 8px 60px;
+    }
+}
