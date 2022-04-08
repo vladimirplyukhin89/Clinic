@@ -1,0 +1,9 @@
+.btn {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    margin-right: var(--mobile-gap);
+    padding: 15px 40px;
+    border: 1px solid var(--colors-t-first);
+    border-radius: var(--border-main);
+    cursor: pointer;
+}

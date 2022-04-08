@@ -24,7 +24,7 @@
   --border-main: 5px;
 
   /* Colors */
-  --colors-bg: #FFF;
+  --colors-bg: rgba(255, 255, 255, 1);
   --colors-t-main: rgba(37, 43, 66, 1);
   --colors-t-first: rgba(255, 104, 91, 1);
   --colors-t-second: rgba(115, 115, 115, 1);

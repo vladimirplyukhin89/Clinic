@@ -1,0 +1,38 @@
+.container {
+    margin: 0 11px 14px 14px;
+}
+
+.wrapper_card {
+    width: 328px;
+    height: auto;
+    padding: 35px 40px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+}
+
+.title {
+    color: var(--colors-t-main);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    line-height: 24px;
+    padding: 20px 0;
+}
+
+.text {
+    font-size: var(--fs-sm);
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: var(--colors-t-second);
+    padding-top: 20px;
+    position: relative;
+}
+
+.text::before {
+    size: 50px;
+    content: '';
+    width: 50px;
+    border-top: 2px solid var(--colors-icon);
+    color: rgba(231, 64, 64, 1);
+    position: absolute;
+    top: 1%;
+}
