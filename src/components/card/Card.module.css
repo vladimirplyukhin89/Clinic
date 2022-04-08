@@ -5,6 +5,7 @@
 .wrapper_card {
     width: 328px;
     height: auto;
+    margin-bottom: 30px;
     padding: 35px 40px;
     box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
 }
@@ -35,4 +36,16 @@
     color: rgba(231, 64, 64, 1);
     position: absolute;
     top: 1%;
+}
+
+@media(min-width: 767px) {
+    .container {
+        margin: 0 11px 14px 0px;
+    }
+
+    .wrapper_card {
+        margin: 80px 0;
+    }
+
+
 }

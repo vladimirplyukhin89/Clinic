@@ -4,12 +4,13 @@
     background-color: var(--colors-icon);
     border-radius: 50%;
     position: relative;
+    cursor: pointer;
 }
 
 .medical_image {
     position: relative;
     width: 32px;
     height: 32px;
-    top: 25%;
+    top: 27%;
     left: 27%;
 }

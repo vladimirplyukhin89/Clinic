@@ -1,0 +1,18 @@
+.title {
+    min-width: 355px;
+    font-size: 28px;
+    font-weight: var(--fw-bold);
+    line-height: 39px;
+    color: var(--colors-t-main);
+    padding-top: 55px;
+    padding-bottom: 35px;
+}
+
+@media(min-width: 767px) {
+    .title {
+        font-size: 58px;
+        line-height: 80px;
+        min-width: 727px;
+    }
+
+}

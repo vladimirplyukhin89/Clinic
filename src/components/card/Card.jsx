@@ -1,16 +1,14 @@
 import MedicalImage from '../medical_image/MedicalImage';
 import s from './Card.module.css';
 
-const Card = ({ img, name, title, text }) => {
+const Card = ({ title, text, ...rest }) => {
     return (
         <article className={s.container}>
             <div className={s.wrapper_card}>
                 <MedicalImage
-                    img={img}
-                    name={name}
+                    {...rest}
                 />
-                <h2 className={s.title}>{title}</h2>
-                {/*<hr className={s.line} />*/}
+                <h5 className={s.title}>{title}</h5>
                 <p className={s.text}>{text}</p>
             </div>
         </article>

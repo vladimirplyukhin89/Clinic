@@ -13,4 +13,4 @@ const MedicalImage = ({ img, name }) => {
     );
 };
 
-export default MedicalImage;
+export default MedicalImage;             

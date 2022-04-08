@@ -2,16 +2,23 @@
     margin: 0 var(--mobile-gap);
 }
 
-.wrapper_welcoming {
+.wrapper_welcome {
     padding-bottom: 18px;
     margin-bottom: 11px;
 }
 
-.title {
-    font-size: 28px;
-    font-weight: var(--fw-bold);
-    line-height: 39px;
-    color: var(--colors-t-main);
-    padding-top: 55px;
-    padding-bottom: 35px;
+.wrapper_cards {
+    display: flex;
+    flex-direction: column
+}
+
+@media(min-width: 767px) {
+    .container {
+        margin: 0 195px;
+    }
+
+    .wrapper_cards {
+        display: flex;
+        flex-direction: row;
+    }
 }
