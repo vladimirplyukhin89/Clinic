@@ -13,6 +13,7 @@ const Layout = () => {
         <>
             <Header setActive={setModalActive} />
             <Main />
+            {/*<Modal active={modalActive} setActive={setModalActive}>*/}
             <Modal active={modalActive} setActive={setModalActive}>
             </Modal>
         </>
