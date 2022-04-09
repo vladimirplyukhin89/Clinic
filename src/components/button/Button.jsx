@@ -10,11 +10,15 @@ const Button = ({ text, color, colorBg }) => {
     }
 
     return (
-        <button
-            style={sectionStyle}
-            className={s.btn}
-        >{text}
-        </button>
+        <div className={s.wrapper}>
+            {
+                text && <button
+                    style={sectionStyle}
+                    className={s.btn}
+                >{text}
+                </button>
+            }
+        </div>
     );
 };
 

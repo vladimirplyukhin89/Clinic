@@ -1,10 +1,15 @@
 import s from './Navigation.module.css';
 
-const Navigation = () => {
+const Navigation = ({ setActive }) => {
     return (
         <div>
             <a href='#' className={s.contacts}>Контакты</a>
-            <button className={s.login}>Войти</button>
+            <button
+                onClick={() => setActive(true)}
+                className={s.login}
+            >
+                Войти
+            </button>
         </div>
     );
 };

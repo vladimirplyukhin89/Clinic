@@ -1,0 +1,10 @@
+.wrapper_cards {
+    display: flex;
+    flex-direction: column
+}
+
+@media(min-width: 767px) {
+    .wrapper_cards {
+        flex-direction: row;
+    }
+}

@@ -12,7 +12,7 @@
     .title {
         font-size: 58px;
         line-height: 80px;
-        min-width: 727px;
+        max-width: 727px;
     }
 
 }

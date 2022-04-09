@@ -1,3 +1,9 @@
+.wrapper {
+    display: inline-block;
+    padding-bottom: 18px;
+    margin-bottom: 11px;
+}
+
 .btn {
     font-size: var(--fs-sm);
     font-weight: var(--fw-bold);

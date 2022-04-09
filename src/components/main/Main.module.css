@@ -1,24 +1,12 @@
 .container {
+    width: 100%;
+    max-width: 1240px;
     margin: 0 var(--mobile-gap);
-}
-
-.wrapper_welcome {
-    padding-bottom: 18px;
-    margin-bottom: 11px;
-}
-
-.wrapper_cards {
-    display: flex;
-    flex-direction: column
+    padding-bottom: 30px;
 }
 
 @media(min-width: 767px) {
     .container {
         margin: 0 195px;
-    }
-
-    .wrapper_cards {
-        display: flex;
-        flex-direction: row;
     }
 }
