@@ -12,9 +12,11 @@ const Main = () => {
                     title='Место для получения медицинской помощи'
                 />
                 <Button
+                    type='text'
                     text='Войти'
                     color='rgba(255, 255, 255, 1)'
                     colorBg='rgba(255, 104, 91, 1)'
+                    margin='10px'
                 />
                 <Button
                     text='Контакты'
