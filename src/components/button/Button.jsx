@@ -1,6 +1,16 @@
 import s from './Button.module.css';
+import cn from 'classnames';
 
-const Button = ({ type, text, color, colorBg, margin }) => {
+const Button = ({
+    type,
+    text,
+    color,
+    colorBg,
+    margin,
+    disabled,
+    active,
+    setActive
+}) => {
     const sectionStyle = {};
     if (color) {
         sectionStyle.color = color;
@@ -16,9 +26,12 @@ const Button = ({ type, text, color, colorBg, margin }) => {
         <div className={s.wrapper}>
             {
                 text && <button
+                    disabled={disabled}
                     type={type}
                     style={sectionStyle}
                     className={s.btn}
+                //onClick={setActive((prev) => !prev)}
+                //className={cn(s.btn, { [s.active]: active })}
                 >{text}
                 </button>
             }

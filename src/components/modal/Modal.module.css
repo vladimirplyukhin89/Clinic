@@ -16,7 +16,6 @@
 .modal.active {
     opacity: 1;
     pointer-events: all;
-
 }
 
 .modal__content {

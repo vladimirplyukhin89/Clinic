@@ -4,7 +4,7 @@ import WrapperCards from '../wrapper_cards/WrapperCards';
 
 import s from './Main.module.css';
 
-const Main = () => {
+const Main = (rest) => {
     return (
         <main>
             <section className={s.container}>
@@ -17,6 +17,7 @@ const Main = () => {
                     color='rgba(255, 255, 255, 1)'
                     colorBg='rgba(255, 104, 91, 1)'
                     margin='10px'
+                    {...rest}
                 />
                 <Button
                     text='Контакты'
