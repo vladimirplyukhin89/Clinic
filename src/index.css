@@ -49,6 +49,19 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  outline: none;
+  box-shadow: 0px 13px 19px rgba(115, 115, 115, 0.4);
+}
+
 button:disabled {
   cursor: default;
   opacity: 0.5;

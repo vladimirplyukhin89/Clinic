@@ -15,7 +15,11 @@
     border: 2px solid #FF685B;
     border-radius: var(--border-header);
     padding: 6px 20px;
-    cursor: pointer;
+}
+
+.login:hover {
+    color: var(--colors-bg);
+    background-color: var(--colors-t-first);
 }
 
 @media(min-width: 767px) {

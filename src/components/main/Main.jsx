@@ -20,6 +20,7 @@ const Main = (rest) => {
                     {...rest}
                 />
                 <Button
+                    type='text'
                     text='Контакты'
                     color='rgba(255, 104, 91, 1)'
                     colorBg='rgba(255, 255, 255, 1)'

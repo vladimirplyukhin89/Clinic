@@ -6,22 +6,22 @@ import cn from 'classnames';
 import s from './Form.module.css';
 
 
-const Form = ({ active, setActive }) => {
+const Form = ({ active, setActive, form, setForm, toggleName }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailDirty, setEmailDirty] = useState(false);
     const [passwordDirty, setPasswordDirty] = useState(false);
     const [emailError, setEmailError] = useState('Логин не может быть пустым');
     const [passwordError, setPasswordError] = useState('Пароль не может быть пустым');
-    const [formValid, setFormValid] = useState(false);
+    //const [formValid, setFormValid] = useState(false);
 
     useEffect(() => {
         if (emailError || passwordError) {
-            setFormValid(false)
+            setForm(false)
         } else {
-            setFormValid(true)
+            setForm(true)
         }
-    }, [emailError, passwordError])
+    }, [emailError, passwordError, toggleName])
 
     const blurHandler = (e) => {
         switch (e.target.name) {
@@ -94,7 +94,7 @@ const Form = ({ active, setActive }) => {
                     placeholder='Введите свой пароль'
                 />
                 <Button
-                    disabled={!formValid}
+                    disabled={!form}
                     type='submit'
                     text='Потвердить'
                     color='rgba(255, 104, 91, 1)'

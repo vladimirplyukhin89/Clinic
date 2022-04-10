@@ -9,13 +9,26 @@ import WrapperCards from '../wrapper_cards/WrapperCards';
 
 const Layout = () => {
     const [modalActive, setModalActive] = useState(false);
+    const [formValid, setFormValid] = useState(false);
 
     return (
         <>
-            <Header setActive={setModalActive} />
+            <Header
+                setActive={setModalActive}
+                form={formValid}
+                setForm={setFormValid}
+            />
             <Main active={modalActive} setActive={setModalActive} />
-            <Modal active={modalActive} setActive={setModalActive}>
-                <Form active={modalActive} setActive={setModalActive} />
+            <Modal
+                active={modalActive}
+                setActive={setModalActive}
+            >
+                <Form
+                    active={modalActive}
+                    setActive={setModalActive}
+                    form={formValid}
+                    setForm={setFormValid}
+                />
             </Modal>
         </>
     );

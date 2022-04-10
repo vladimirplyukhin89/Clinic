@@ -1,7 +1,7 @@
 import Navigation from './navigation/Navigation';
 
 import s from './Header.module.css';
-import logoImg from '../../image/logo.png';
+import logoImg from '../../image/logo.svg';
 
 const Header = (rest) => {
     return (

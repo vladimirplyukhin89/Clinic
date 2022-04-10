@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import s from './Navigation.module.css';
 
-const Navigation = ({ setActive }) => {
+const Navigation = ({ setActive, form, setForm }) => {
     const [text, setText] = useState('Войти');
 
-    const toggleModal = () => {
+    const toggleModalText = () => {
         setText(text === 'Войти' ? 'Выйти' : 'Войти');
     }
 
@@ -18,7 +18,7 @@ const Navigation = ({ setActive }) => {
         <div>
             <a href='#' className={s.contacts}>Контакты</a>
             <button
-                onClick={toggleModal}
+                onClick={toggleModalText}
                 className={s.login}
             >
                 {text}

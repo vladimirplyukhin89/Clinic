@@ -10,7 +10,6 @@
     padding: 15px 40px;
     border: 1px solid var(--colors-t-first);
     border-radius: var(--border-main);
-    cursor: pointer;
     opacity: 1;
 }
 
