@@ -1,14 +1,14 @@
-import Main from "../components/main/Main";
-import Title from "../components/title/Title";
-import Button from "../components/button/Button";
 
 
-const LoginPage = () => {
+
+const Login = () => {
+
+
     return (
-        <>
+        <div>
 
-        </>
+        </div>
     );
 };
 
-export default LoginPage;
+export default Login;

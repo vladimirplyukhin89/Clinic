@@ -1,21 +1,23 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
-import Contacts from './pages/Contacts';
 import Login from './pages/Login';
+import Contacts from './pages/Contacts';
+import Notfound from './pages/Notfound';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Layout />} >
-          <Route index element={<Home />} />
-          <Route path='contacts' element={<Contacts />} />
-          <Route path='login' element={<Login />} />
+        <Route element={<Layout />} >
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="*" element={<Notfound />} />
         </Route>
       </Routes>
     </>
   );
-}
+};
 
 export default App;

@@ -7,8 +7,7 @@ const Button = ({
     colorBg,
     margin,
     disabled,
-    active,
-    setActive
+    changeModal = f => f
 }) => {
     // Стили для кнопки
     const sectionStyle = {};
@@ -30,8 +29,7 @@ const Button = ({
                     style={sectionStyle}
                     className={s.btn}
                     disabled={disabled}
-                //onClick={setActive((prev) => !prev)}
-                //className={cn(s.btn, { [s.active]: active })}
+                    onClick={changeModal}
                 >{text}
                 </button>
             }

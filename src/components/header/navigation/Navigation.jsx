@@ -1,25 +1,24 @@
-import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react';
+import cn from 'classnames';
+
 import s from './Navigation.module.css';
 
-const Navigation = ({ setActive, form, setForm }) => {
+const Navigation = ({ active, setActive }) => {
+    console.log(active);
     const [text, setText] = useState('Войти');
 
-    const toggleModalText = () => {
+    const toggleModalText = (prev) => {
+        setActive(prev)
         setText(text === 'Войти' ? 'Выйти' : 'Войти');
     }
 
-    useEffect(() => {
-        if (text === 'Выйти') {
-            setActive((prev) => !prev);
-        }
-    }, [text]);
-
     return (
         <div>
-            <a href='#' className={s.contacts}>Контакты</a>
+            <NavLink to='/contacts' className={s.contacts}>Контакты</NavLink>
             <button
-                onClick={toggleModalText}
-                className={s.login}
+                onClick={(prev) => setActive(prev)}
+                className={cn(s.login, { [s.active]: active })}
             >
                 {text}
             </button>

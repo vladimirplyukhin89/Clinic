@@ -19,6 +19,7 @@
 }
 
 .modal__content {
+    max-width: 400px;
     padding: 20px;
     border-radius: 10px;
     background-color: var(--colors-bg);
