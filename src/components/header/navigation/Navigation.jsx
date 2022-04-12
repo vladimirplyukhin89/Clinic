@@ -5,19 +5,18 @@ import cn from 'classnames';
 import s from './Navigation.module.css';
 
 const Navigation = ({ active, setActive }) => {
-    console.log(active);
     const [text, setText] = useState('Войти');
 
-    const toggleModalText = (prev) => {
-        setActive(prev)
-        setText(text === 'Войти' ? 'Выйти' : 'Войти');
-    }
+    const handleModal = () => {
+        setActive(prev => !prev);
+        //    setText(text === 'Войти' ? 'Выйти' : 'Войти');
+    };
 
     return (
         <div>
             <NavLink to='/contacts' className={s.contacts}>Контакты</NavLink>
             <button
-                onClick={(prev) => setActive(prev)}
+                onClick={handleModal}
                 className={cn(s.login, { [s.active]: active })}
             >
                 {text}

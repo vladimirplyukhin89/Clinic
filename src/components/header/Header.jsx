@@ -4,7 +4,6 @@ import s from './Header.module.css';
 import logoImg from '../../image/logo.svg';
 
 const Header = (rest) => {
-    console.log(rest);
     return (
         <>
             <header className={s.header}>

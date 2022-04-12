@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import Button from '../button/Button';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 import { IoClose } from 'react-icons/io5';
 import cn from 'classnames';
 
@@ -7,6 +8,7 @@ import s from './Form.module.css';
 
 
 const Form = ({ active, setActive }) => {
+    // Регистрация
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailDirty, setEmailDirty] = useState(false);
@@ -15,13 +17,27 @@ const Form = ({ active, setActive }) => {
     const [passwordError, setPasswordError] = useState('Пароль не может быть пустым');
     const [formValid, setFormValid] = useState(false);
 
+    // Приватный роутинг
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { signin } = useAuth();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const user = form.username.value;
+
+        signin(user, () => navigate('/login', { replace: true }));
+    };
+
+
     useEffect(() => {
         if (emailError || passwordError) {
-            setFormValid(false)
+            setFormValid(false);
         } else {
-            setFormValid(true)
+            setFormValid(true);
         }
-    }, [emailError, passwordError])
+    }, [emailError, passwordError]);
 
     const blurHandler = (e) => {
         switch (e.target.name) {
@@ -43,7 +59,7 @@ const Form = ({ active, setActive }) => {
         if (!re.test(String(email).toLowerCase())) {
             setEmailError('Некорректный емейл');
             if (!email) {
-                setEmailError('Логин не может быть пустым');
+                setEmailError('Емейл не может быть пустым');
             }
         } else {
             setEmailError('');
@@ -67,12 +83,21 @@ const Form = ({ active, setActive }) => {
 
     return (
         <>
-            <form className={s.container}>
+            <form
+                onSubmit={handleSubmit}
+                className={s.container}
+            >
                 <IoClose
                     className={cn(s.close, { [s.active]: active })}
                     onClick={() => setActive(false)}
                 />
                 <h2 className={s.title}>Регистрация</h2>
+                <input
+                    className={s.text__input}
+                    name='username'
+                    type='text'
+                    placeholder='Введите свой логин'
+                />
                 {(emailDirty && emailError) && <div className={s.warning}>{emailError}</div>}
                 <input
                     value={email}
@@ -81,7 +106,7 @@ const Form = ({ active, setActive }) => {
                     className={s.text__input}
                     name='email'
                     type='text'
-                    placeholder='Введите свой логин'
+                    placeholder='Введите свой емейл'
                 />
                 {(passwordDirty && passwordError) && <div className={s.warning}>{passwordError}</div>}
                 <input
@@ -93,13 +118,12 @@ const Form = ({ active, setActive }) => {
                     type='password'
                     placeholder='Введите свой пароль'
                 />
-                <Button
+                <button
+                    className={s.btn}
                     type='submit'
-                    text='Потвердить'
-                    color='rgba(255, 104, 91, 1)'
-                    colorBg='rgba(255, 255, 255, 1)'
                     disabled={!formValid}
-                />
+                    onClick={() => setActive(false)}
+                >Потвердить</button>
             </form>
         </>
     );

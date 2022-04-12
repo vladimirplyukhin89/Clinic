@@ -8,7 +8,10 @@ import Modal from '../components/modal/Modal';
 const Home = () => {
     const [modalActive, setModalActive] = useOutletContext();
 
-    const turnModal = (prev) => setModalActive(prev)
+    const handlerModal = () => {
+        setModalActive(prev => !prev);
+        //    setText(text === 'Войти' ? 'Выйти' : 'Войти');
+    };
 
     return (
         <>
@@ -22,7 +25,7 @@ const Home = () => {
                     color='rgba(255, 255, 255, 1)'
                     colorBg='rgba(255, 104, 91, 1)'
                     margin='10px'
-                    changeModal={turnModal}
+                    changeModal={handlerModal}
                 />
                 <Button
                     type='text'

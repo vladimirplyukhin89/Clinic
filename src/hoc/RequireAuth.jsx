@@ -1,18 +1,15 @@
-import { Location, Navigate, useLocation } from 'react-router-dom';
+import { useLocation, Navigate } from 'react-router-dom';
+import { useAuth } from '../components/hooks/useAuth';
 
 const RequireAuth = ({ children }) => {
     const location = useLocation();
-    const auth = false;
+    const { user } = useAuth();
 
-    if (!auth) {
-        return
+    if (!user) {
+        return <Navigate to='/' state={{ from: location }} replace />
     }
 
-    return (
-        <div>
-
-        </div>
-    );
+    return children;
 };
 
 export default RequireAuth;
