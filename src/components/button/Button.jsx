@@ -7,7 +7,7 @@ const Button = ({
     colorBg,
     margin,
     disabled,
-    changeModal = f => f
+    handler = f => f
 }) => {
     // Стили для кнопки
     const sectionStyle = {};
@@ -29,7 +29,7 @@ const Button = ({
                     style={sectionStyle}
                     className={s.btn}
                     disabled={disabled}
-                    onClick={changeModal}
+                    onClick={handler}
                 >{text}
                 </button>
             }

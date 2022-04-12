@@ -50,7 +50,8 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  cursor: pointer;
+  color: var(--colors-t-first);
 }
 
 button {

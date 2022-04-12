@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { IoClose } from 'react-icons/io5';
 import cn from 'classnames';
@@ -19,17 +19,14 @@ const Form = ({ active, setActive }) => {
 
     // Приватный роутинг
     const navigate = useNavigate();
-    const location = useLocation();
     const { signin } = useAuth();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const user = form.username.value;
-
         signin(user, () => navigate('/login', { replace: true }));
     };
-
 
     useEffect(() => {
         if (emailError || passwordError) {

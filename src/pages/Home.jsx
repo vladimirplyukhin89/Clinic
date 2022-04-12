@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import Title from '../components/title/Title';
 import Button from '../components/button/Button';
 import WrapperCards from '../components/wrapper_cards/WrapperCards';
@@ -12,6 +12,7 @@ const Home = () => {
         setModalActive(prev => !prev);
         //    setText(text === 'Войти' ? 'Выйти' : 'Войти');
     };
+    let navigate = useNavigate();
 
     return (
         <>
@@ -25,13 +26,14 @@ const Home = () => {
                     color='rgba(255, 255, 255, 1)'
                     colorBg='rgba(255, 104, 91, 1)'
                     margin='10px'
-                    changeModal={handlerModal}
+                    handler={handlerModal}
                 />
                 <Button
                     type='text'
                     text='Контакты'
                     color='rgba(255, 104, 91, 1)'
                     colorBg='rgba(255, 255, 255, 1)'
+                    handler={() => navigate('/contacts', { replace: true })}
                 />
                 <WrapperCards />
                 <Modal active={modalActive} setActive={setModalActive}>
