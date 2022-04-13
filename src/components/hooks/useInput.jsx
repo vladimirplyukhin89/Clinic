@@ -3,12 +3,10 @@ import { useState, useEffect } from 'react';
 export const useValidation = (value, validations) => {
     const [isEmpty, setEmpty] = useState(true);
     const [minLengthError, setMinLengthError] = useState(false);
-    const [emailError, setEmailError] = useState(false);
     const [formValid, setFormValid] = useState(false);
     const [error, setError] = useState({
         password: '',
         lengthForUser: '',
-        lengthForEmail: '',
         lengthForPassword: ''
     });
 
@@ -26,7 +24,6 @@ export const useValidation = (value, validations) => {
                             setError({
                                 ...error,
                                 lengthForUser: 'Поле не может быть пустым',
-                                lengthForEmail: 'Поле не может быть пустым',
                                 lengthForPassword: 'Поле не может быть пустым'
                             });
                         }
@@ -41,7 +38,6 @@ export const useValidation = (value, validations) => {
                         setError({
                             ...error,
                             lengthForUser: 'Поле не может быть пустым',
-                            lengthForEmail: 'Поле не может быть пустым',
                             lengthForPassword: 'Поле не может быть пустым'
                         });
                     } else {
@@ -49,29 +45,21 @@ export const useValidation = (value, validations) => {
                         setError('');
                     }
                     break;
-                case 'isEmail':
-                    const re =
-                        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-                    re.test(String(value).toLowerCase()) ?
-                        setEmailError(false) :
-                        setEmailError(true);
-                    break;
             }
         }
     }, [value]);
 
     useEffect(() => {
-        if (isEmpty || minLengthError || emailError || error) {
+        if (isEmpty || minLengthError || error) {
             setFormValid(false);
         } else {
             setFormValid(true);
         }
-    }, [isEmpty, minLengthError, emailError, error])
+    }, [isEmpty, minLengthError, error])
 
     return {
         isEmpty,
         minLengthError,
-        emailError,
         error,
         formValid
     }

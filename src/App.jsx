@@ -1,9 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Contacts from './pages/Contacts';
-import Notfound from './pages/Notfound';
 
 import RequireAuth from './hoc/RequireAuth';
 import AuthProvider from './hoc/AuthProvider';
@@ -15,13 +14,12 @@ function App() {
         <Routes>
           <Route element={<Layout />} >
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={
+            <Route path="/profile" element={
               <RequireAuth>
-                <Login />
+                <Profile />
               </RequireAuth>
             } />
             <Route path="/contacts" element={<Contacts />} />
-            <Route path="*" element={<Notfound />} />
           </Route>
         </Routes>
       </AuthProvider>

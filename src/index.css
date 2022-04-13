@@ -68,6 +68,10 @@ button:disabled {
   opacity: 0.5;
 }
 
+button:active {
+  color: var(--colors-t-first);
+}
+
 .active {
   color: var(--colors-t-first);
   cursor: default;

@@ -4,6 +4,7 @@
     font-weight: var(--fw-bold);
     line-height: 39px;
     color: var(--colors-t-main);
+    margin-left: 10px;
     padding-top: 55px;
     padding-bottom: 35px;
 }

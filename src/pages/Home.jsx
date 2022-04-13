@@ -1,33 +1,46 @@
 import { useOutletContext, useNavigate } from "react-router-dom";
+import { useAuth } from '../components/hooks/useAuth';
 import Title from '../components/title/Title';
 import Button from '../components/button/Button';
 import WrapperCards from '../components/wrapper_cards/WrapperCards';
-import Form from '../components/form_registration/Form'
+import Form from '../components/loginForm/loginForm'
 import Modal from '../components/modal/Modal';
 
 const Home = () => {
     const [modalActive, setModalActive] = useOutletContext();
+    const navigate = useNavigate();
+    const { user, signout } = useAuth();
 
-    const handlerModal = () => {
-        setModalActive(prev => !prev);
-        //    setText(text === 'Войти' ? 'Выйти' : 'Войти');
+    const handleOnClick = () => {
+        if (user) {
+            signout(() => navigate('/', { replace: true }));
+        } else {
+            setModalActive(true);
+        }
     };
-    let navigate = useNavigate();
 
     return (
         <>
             <section>
                 <Title
                     title='Место для получения медицинской помощи'
+                    marginTop='40px'
                 />
-                <Button
-                    type='text'
-                    text='Войти'
-                    color='rgba(255, 255, 255, 1)'
-                    colorBg='rgba(255, 104, 91, 1)'
-                    margin='10px'
-                    handler={handlerModal}
-                />
+                <button
+                    style={{
+                        color: 'var(--colors-bg)',
+                        backgroundColor: 'var(--colors-t-first)',
+                        margin: '10px',
+                        padding: '15px 40px',
+                        fontSize: 'var(--fs-sm)',
+                        fontWeight: 'var(--fw-bold)',
+                        borderRadius: 'var(--border-header)',
+                        border: '1px solid var(--colors-t-first)',
+                    }}
+                    onClick={handleOnClick}
+                >
+                    {user ? 'Выйти' : 'Войти'}
+                </button>
                 <Button
                     type='text'
                     text='Контакты'
