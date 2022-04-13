@@ -1,5 +1,5 @@
-import s from './WrapperCards.module.css';
 import Card from '../card/Card';
+import s from './WrapperCards.module.css';
 
 import medHistoryImg from '../../image/medical-history.svg';
 import medHeartImg from '../../image/heart.svg';

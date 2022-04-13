@@ -3,7 +3,7 @@ import { useAuth } from '../components/hooks/useAuth';
 import Button from '../components/button/Button';
 
 const Profile = () => {
-    const [modalActive, setModalActive] = useOutletContext();
+    const [setModalActive] = useOutletContext();
     let { user, signout } = useAuth();
     let navigate = useNavigate();
 

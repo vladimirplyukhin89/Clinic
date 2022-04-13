@@ -16,7 +16,6 @@ const Header = (rest) => {
                         onClick={goHome}
                         src={logoImg} alt='logo'
                         className={s.logo}
-
                     />
                     <Navigation {...rest} />
                 </div>
