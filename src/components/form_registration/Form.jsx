@@ -1,21 +1,19 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useInput } from '../hooks/useInput';
 import { IoClose } from 'react-icons/io5';
-import cn from 'classnames';
 
+import cn from 'classnames';
 import s from './Form.module.css';
 
 
 const Form = ({ active, setActive }) => {
     // Регистрация
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [emailDirty, setEmailDirty] = useState(false);
-    const [passwordDirty, setPasswordDirty] = useState(false);
-    const [emailError, setEmailError] = useState('Логин не может быть пустым');
-    const [passwordError, setPasswordError] = useState('Пароль не может быть пустым');
-    const [formValid, setFormValid] = useState(false);
+    const username = useInput('', { isEmpty: true, minLength: 3 });
+    const email = useInput('', { isEmpty: true, minLength: 3, isEmail: true });
+    const password = useInput('', { isEmpty: true, minLength: 8 });
+    const { formValid } = useInput('');
+    console.log(username.formValid, email.formValid, password.formValid);
 
     // Приватный роутинг
     const navigate = useNavigate();
@@ -26,56 +24,6 @@ const Form = ({ active, setActive }) => {
         const form = e.target;
         const user = form.username.value;
         signin(user, () => navigate('/login', { replace: true }));
-    };
-
-    useEffect(() => {
-        if (emailError || passwordError) {
-            setFormValid(false);
-        } else {
-            setFormValid(true);
-        }
-    }, [emailError, passwordError]);
-
-    const blurHandler = (e) => {
-        switch (e.target.name) {
-            case 'email':
-                setEmailDirty(true);
-                break;
-            case 'password':
-                setPasswordDirty(true);
-                break;
-        }
-    };
-
-    // Валидация email
-    const emailHandler = (e) => {
-        let email = e.target.value;
-        setEmail(email);
-        const re =
-            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (!re.test(String(email).toLowerCase())) {
-            setEmailError('Некорректный емейл');
-            if (!email) {
-                setEmailError('Емейл не может быть пустым');
-            }
-        } else {
-            setEmailError('');
-        }
-
-    };
-
-    // Валидация пароля
-    const passwordHandler = (e) => {
-        let password = e.target.value;
-        setPassword(password);
-        if (password.length < 8) {
-            setPasswordError('Пароль должен быть минимум 8 символов');
-            if (!password) {
-                setPasswordError('Пароль не может быть пустым');
-            }
-        } else {
-            setPasswordError('');
-        }
     };
 
     return (
@@ -89,27 +37,32 @@ const Form = ({ active, setActive }) => {
                     onClick={() => setActive(false)}
                 />
                 <h2 className={s.title}>Регистрация</h2>
+                {(username.isDirty && username.isEmpty) && <div className={s.warning}>{username.error.lengthForUser}</div>}
                 <input
+                    value={username.value}
+                    onChange={e => username.onChange(e)}
+                    onBlur={e => username.onBlur(e)}
                     className={s.text__input}
                     name='username'
                     type='text'
-                    placeholder='Введите свой логин'
+                    placeholder='Введите своё имя'
                 />
-                {(emailDirty && emailError) && <div className={s.warning}>{emailError}</div>}
+                {(email.isDirty && email.emailError) && <div className={s.warning}>Некорректный email</div>}
                 <input
-                    value={email}
-                    onBlur={e => blurHandler(e)}
-                    onChange={e => emailHandler(e)}
+                    value={email.value}
+                    onChange={e => email.onChange(e)}
+                    onBlur={e => email.onBlur(e)}
                     className={s.text__input}
                     name='email'
                     type='text'
                     placeholder='Введите свой емейл'
                 />
-                {(passwordDirty && passwordError) && <div className={s.warning}>{passwordError}</div>}
+                {(password.isDirty) && <div className={s.warning}>{password.error.password}</div>}
+                {(password.isDirty && password.isEmpty) && <div className={s.warning}>{password.error.lengthForPassword}</div>}
                 <input
-                    value={password}
-                    onBlur={e => blurHandler(e)}
-                    onChange={e => passwordHandler(e)}
+                    value={password.value}
+                    onChange={e => password.onChange(e)}
+                    onBlur={e => password.onBlur(e)}
                     className={s.text__input}
                     name='password'
                     type='password'
@@ -118,7 +71,7 @@ const Form = ({ active, setActive }) => {
                 <button
                     className={s.btn}
                     type='submit'
-                    disabled={!formValid}
+                    disabled={!username.formValid || !email.formValid || !password.formValid}
                     onClick={() => setActive(false)}
                 >Потвердить</button>
             </form>
