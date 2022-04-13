@@ -25,8 +25,8 @@ login: Ser
 password: 12345678
 ### Links
 
-- Solution URL: [GitHub]()
-- Live Site URL: [GitHub Pages]()
+- Solution URL: [GitHub](https://github.com/vladimirplyukhin89/Clinic)
+- Live Site URL: [Vercel](https://clinic-lilac.vercel.app/)
 
 ### Built with
 
