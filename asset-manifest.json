@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4e6c3a2f.css",
+    "main.js": "/static/js/main.670bf1ea.js",
+    "static/media/logo.svg": "/static/media/logo.73694723ba02e2a60545b4ca1da1af36.svg",
+    "static/media/medical-history.svg": "/static/media/medical-history.a00cb0f5144a3f19155b2f45ba156580.svg",
+    "static/media/med-tools.svg": "/static/media/med-tools.22d9ee48145e23ba28487053ba11a4aa.svg",
+    "static/media/heart.svg": "/static/media/heart.133ce36b617a553a81845590ee8d7e00.svg",
+    "index.html": "/index.html",
+    "main.4e6c3a2f.css.map": "/static/css/main.4e6c3a2f.css.map",
+    "main.670bf1ea.js.map": "/static/js/main.670bf1ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e6c3a2f.css",
+    "static/js/main.670bf1ea.js"
+  ]
+}
