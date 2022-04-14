@@ -58,8 +58,12 @@ const Form = ({ active, setActive }) => {
                         type='text'
                         placeholder='Имя пользователя'
                     />
-                    {error && <div className={s.warning}>Неверное имя пользователя или пароль</div>}
-                    {(login.isDirty && login.isEmpty) && <div className={s.warning}>{login.error.lengthForUser}</div>}
+                    <p>
+                        {error && <div className={s.warning}>Неверное имя пользователя или пароль</div>}
+                    </p>
+                    <p>
+                        {(login.isDirty && login.isEmpty) && <div className={s.warning}>{login.error.lengthForUser}</div>}
+                    </p>
                 </div>
                 <div className={s.input__wrapper}>
                     <input
@@ -71,8 +75,12 @@ const Form = ({ active, setActive }) => {
                         type='password'
                         placeholder='Пароль'
                     />
-                    {(password.isDirty) && <div className={s.warning}>{password.error.password}</div>}
-                    {(password.isDirty && password.isEmpty) && <div className={s.warning}>{password.error.lengthForPassword}</div>}
+                    <p>
+                        {(password.isDirty) && <div className={s.warning}>{password.error.password}</div>}
+                    </p>
+                    <p>
+                        {(password.isDirty && password.isEmpty) && <div className={s.warning}>{password.error.lengthForPassword}</div>}
+                    </p>
                 </div>
                 <button
                     className={s.btn}
