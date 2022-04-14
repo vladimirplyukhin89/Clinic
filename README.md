@@ -26,7 +26,7 @@ password: 12345678
 ### Links
 
 - Solution URL: [GitHub](https://github.com/vladimirplyukhin89/Clinic)
-- Live Site URL: [Vercel](https://clinic-lilac.vercel.app/)
+- Live Site URL: [Vercel](https://med-clinic.vercel.appp/)
 
 ### Built with
 
