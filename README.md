@@ -8,6 +8,7 @@ I also used in this project:
 4. "react-dom": "^18.0.0",
 5. "react-router-dom": "^6.3.0",
 6. "react-icons": "^4.3.1",
+"react-hook-form": "^7.29.0",
 7. custom hooks
 
 ## The challenge
