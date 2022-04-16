@@ -1,7 +1,7 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useAuth } from '../hooks/useAuth';
-import { useInput } from '../hooks/useInput';
 import { IoClose } from 'react-icons/io5';
 import users from '../../users.json';
 
@@ -12,20 +12,37 @@ import s from './loginForm.module.css';
 const Form = ({ active, setActive }) => {
     // Регистрация
     const [error, setError] = useState(false);
-    const login = useInput('', { isEmpty: true, minLength: 3 });
-    const password = useInput('', { isEmpty: true, minLength: 8 });
-    const { formValid } = useInput('');
+    const {
+        register,
+        formState: { errors, isValid, isSubmitSuccessful },
+        handleSubmit,
+        watch,
+        reset
+    } = useForm({
+        mode: 'all',
+        defaultValues: {
+            name: '',
+            password: ''
+        }
+    });
+
+    useEffect(() => {
+        if (isSubmitSuccessful) {
+            reset({
+                name: '',
+                password: ''
+            })
+        }
+    }, [isSubmitSuccessful, reset]);
 
     // Приватный роутинг
     const navigate = useNavigate();
     const { signin } = useAuth();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = () => {
 
-        const form = e.target;
-        const login = form.login.value;
-        const password = form.password.value;
+        const login = watch('name');
+        const password = watch('password');
         const user = users.find(user => user.login === login && user.password === password);
 
         if (user !== null && user !== undefined) {
@@ -40,52 +57,58 @@ const Form = ({ active, setActive }) => {
     return (
         <>
             <form
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
                 className={s.container}
             >
                 <IoClose
                     className={cn(s.close, { [s.active]: active })}
                     onClick={() => setActive(false)}
                 />
-                <h2 className={s.title}>Авторизация</h2>
+                <h3 className={s.title}>Авторизация</h3>
                 <div className={s.input__wrapper}>
                     <input
-                        value={login.value}
-                        onChange={e => login.onChange(e)}
-                        onBlur={e => login.onBlur(e)}
+                        {...register('name', {
+                            required: {
+                                value: true,
+                                message: 'Поле обязательно к заполнению'
+                            },
+                        })}
                         className={s.text__input}
-                        name='login'
-                        type='text'
+                        name='name'
                         placeholder='Имя пользователя'
                     />
-                    <p>
-                        {error && <div className={s.warning}>Неверное имя пользователя или пароль</div>}
-                    </p>
-                    <p>
-                        {(login.isDirty && login.isEmpty) && <div className={s.warning}>{login.error.lengthForUser}</div>}
-                    </p>
+                    <div>
+                        {error && <p className={s.warning}>Неверное имя пользователя или пароль</p>}
+                        {errors?.name &&
+                            <p className={s.warning} >{errors?.name?.message || Error}</p>}
+                    </div>
                 </div>
                 <div className={s.input__wrapper}>
                     <input
-                        value={password.value}
-                        onChange={e => password.onChange(e)}
-                        onBlur={e => password.onBlur(e)}
+                        {...register('password', {
+                            required: {
+                                value: true,
+                                message: 'Поле обязательно к заполнению'
+                            },
+                            minLength: {
+                                value: 8,
+                                message: 'Минимум 8 символов'
+                            }
+                        })}
                         className={s.text__input}
                         name='password'
                         type='password'
                         placeholder='Пароль'
                     />
-                    <p>
-                        {(password.isDirty) && <div className={s.warning}>{password.error.password}</div>}
-                    </p>
-                    <p>
-                        {(password.isDirty && password.isEmpty) && <div className={s.warning}>{password.error.lengthForPassword}</div>}
-                    </p>
+                    <div>
+                        {errors?.password &&
+                            <p className={s.warning}> {errors?.password?.message || Error}</p>}
+                    </div>
                 </div>
                 <button
                     className={s.btn}
                     type='submit'
-                    disabled={!login.formValid || !password.formValid}
+                    disabled={!isValid}
                 >Потвердить</button>
             </form>
         </>
