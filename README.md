@@ -1,4 +1,4 @@
-# Personal account of the app for a test task for Aveds.ru
+# Personal account of the app for a test task for Aveds.
 
 This project was finished with [Create React App](https://github.com/facebook/create-react-app).
 I also used in this project:
